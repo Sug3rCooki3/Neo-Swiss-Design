@@ -1,0 +1,256 @@
+/* Neo‑Swiss responsive system — mobile first */
+
+/* Design tokens */
+:root{
+	/* base spacing (8px) */
+	--space: 8px;
+	--space-1: calc(var(--space) * 1); /* 8 */
+	--space-2: calc(var(--space) * 2); /* 16 */
+	--space-3: calc(var(--space) * 3); /* 24 */
+	--space-4: calc(var(--space) * 4); /* 32 */
+	--space-6: calc(var(--space) * 6); /* 48 */
+	--space-8: calc(var(--space) * 8); /* 64 */
+
+	/* palette (monochrome + optional accent) */
+	--bg: #ffffff;
+	--surface: #fbfbfb;
+	--muted: #6d6d6d;
+	--text: #0b0b0b;
+	--accent: #0074ff;
+
+	/* gutters */
+	--gutter-mobile: 12px;
+	--gutter-tablet: 16px;
+	--gutter-desktop: 24px;
+
+	/* breakpoints */
+	--bp-sm: 480px;
+	--bp-md: 768px;
+	--bp-lg: 1200px;
+
+	/* type */
+	--font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	--line-height: 1.45;
+}
+
+/* Base reset and fluid typography */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body.neo-swiss{
+	margin:0;
+	font-family:var(--font-sans);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	background:var(--bg);
+	color:var(--text);
+
+	/* fluid base text size between 16 and 18px */
+	font-size: clamp(16px, 1.4vw, 18px);
+	line-height: var(--line-height);
+	letter-spacing: -0.01em;
+}
+
+/* 1) Ensure the small breakpoint variable is used for fine tweaks */
+@media (min-width: 480px) {
+	/* minor typographic bump for larger phones */
+	body.neo-swiss { font-size: clamp(16px, 1.2vw, 17px); }
+}
+
+/* Container: centered, max-width 1200px, side padding 16px mobile, 24px desktop */
+.container{
+	width:100%;
+	max-width:1200px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:16px;
+	padding-right:16px;
+}
+
+/* increase side padding at desktop breakpoint */
+@media (min-width: var(--bp-lg)) {
+	.container{ padding-left:24px; padding-right:24px; }
+}
+
+/* 6) Ensure container paddings meet requirement (16px mobile, 24px desktop) */
+/* (The container rule already exists; this is a safety override) */
+.container { padding-left:16px; padding-right:16px; }
+@media (min-width: var(--bp-lg)) {
+	.container { padding-left:24px; padding-right:24px; }
+}
+
+/* Grid system (mobile-first)
+   - mobile (>=0): 4 cols, gutter 12px
+   - tablet (>=768px): 6 cols, gutter 16px
+   - desktop (>=1200px): 12 cols, gutter 24px
+*/
+.grid{
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--gutter-mobile);
+	align-items:start;
+}
+
+/* 3) Subtle responsive column guides to make grid structure visible
+   - faint 1px lines at column boundaries, mobile/tablet/desktop percentages */
+.grid {
+	/* keep existing grid behavior, add column guide overlay */
+	background-image: repeating-linear-gradient(
+		to right,
+		rgba(11,11,11,0.03) 0 1px,
+		transparent 1px 25%
+	);
+	background-size: 100% 100%;
+	background-repeat: repeat;
+}
+
+/* Tablet: 6-col */
+@media (min-width: var(--bp-md)){
+	.grid{
+		grid-template-columns: repeat(6, 1fr);
+		gap: var(--gutter-tablet);
+		background-image: repeating-linear-gradient(
+			to right,
+			rgba(11,11,11,0.03) 0 1px,
+			transparent 1px 16.6667%
+		);
+	}
+}
+
+/* Desktop: 12-col */
+@media (min-width: var(--bp-lg)){
+	.grid{
+		grid-template-columns: repeat(12, 1fr);
+		gap: var(--gutter-desktop);
+		background-image: repeating-linear-gradient(
+			to right,
+			rgba(11,11,11,0.03) 0 1px,
+			transparent 1px 8.3333%
+		);
+	}
+}
+
+/* Column span utilities (mobile-first)
+   Use combinations in markup: e.g. col-span-4 col-span-md-3 col-span-lg-6
+*/
+/* Mobile (4-col) */
+.col-span-1{ grid-column: span 1; }
+.col-span-2{ grid-column: span 2; }
+.col-span-3{ grid-column: span 3; }
+.col-span-4{ grid-column: span 4; }
+
+/* Tablet (6-col) */
+@media (min-width: var(--bp-md)){
+	.col-span-md-1{ grid-column: span 1; }
+	.col-span-md-2{ grid-column: span 2; }
+	.col-span-md-3{ grid-column: span 3; }
+	.col-span-md-4{ grid-column: span 4; }
+	.col-span-md-5{ grid-column: span 5; }
+	.col-span-md-6{ grid-column: span 6; }
+}
+
+/* Desktop (12-col) */
+@media (min-width: var(--bp-lg)){
+	.col-span-lg-1{ grid-column: span 1; }
+	.col-span-lg-2{ grid-column: span 2; }
+	.col-span-lg-3{ grid-column: span 3; }
+	.col-span-lg-4{ grid-column: span 4; }
+	.col-span-lg-5{ grid-column: span 5; }
+	.col-span-lg-6{ grid-column: span 6; }
+	.col-span-lg-7{ grid-column: span 7; }
+	.col-span-lg-8{ grid-column: span 8; }
+	.col-span-lg-12{ grid-column: span 12; }
+}
+
+/* Typographic tokens */
+.h1{
+	font-weight:700;
+	/* fluid h1 */
+	font-size: clamp(36px, 5vw, 64px);
+	line-height:1.02;
+	margin:0 0 var(--space-2) 0;
+	letter-spacing:-0.02em;
+}
+.lead{
+	font-size:1rem;
+	color:var(--muted);
+	margin:0 0 var(--space-3) 0;
+}
+.muted{ color:var(--muted); }
+
+/* Basic components (minimal, functional) */
+.card{
+	background:var(--surface);
+	border-radius:10px;
+	padding:var(--space-3);
+	box-shadow: 0 8px 24px rgba(11,11,11,0.04);
+}
+.demo-card{ min-height:160px; display:flex; flex-direction:column; justify-content:center; }
+.doc-card{
+	background:linear-gradient(180deg,#fff,#fbfbfb);
+	border:1px solid #eee;
+	border-radius:8px;
+	padding:var(--space-3);
+	box-shadow: 0 4px 12px rgba(11,11,11,0.03);
+}
+
+/* Buttons */
+.btn{
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:8px;
+	padding: calc(var(--space)) calc(var(--space-2));
+	border-radius:8px;
+	font-weight:600;
+	text-decoration:none;
+	border:1px solid transparent;
+}
+.btn.primary{ background:var(--text); color:var(--bg); }
+.btn.ghost{ background:transparent; color:var(--text); border-color:#eaeaea; }
+
+/* Header / nav */
+.site-header{ border-bottom:1px solid #efefef; background:transparent; }
+.nav{
+	display:flex;
+	align-items:center;
+	gap:var(--space-3);
+	padding-top:var(--space-2);
+	padding-bottom:var(--space-2);
+}
+.brand{ font-weight:700; letter-spacing:-0.02em; }
+.nav-links{ display:none; list-style:none; margin:0; padding:0; gap:var(--space-3); }
+.nav-links li a{ color:var(--muted); text-decoration:none; font-weight:500; }
+.cta{ margin-left:auto; text-decoration:none; }
+
+/* show nav on tablet and up */
+@media (min-width: var(--bp-md)){
+	.nav-links{ display:flex; }
+}
+
+/* 5) Cleaner nav spacing and subtle emphasis */
+.nav { gap: calc(var(--space-2)); }
+.brand { font-weight: 700; letter-spacing: -0.03em; }
+
+/* docs grid gaps follow the system */
+.docs .grid{ gap: var(--gutter-mobile); }
+@media (min-width: var(--bp-md)){ .docs .grid{ gap: var(--gutter-tablet); } }
+@media (min-width: var(--bp-lg)){ .docs .grid{ gap: var(--gutter-desktop); } }
+
+/* 2) Section helper: consistent vertical rhythm and generous white space */
+.section {
+	padding-top: var(--space-3);
+	padding-bottom: var(--space-3);
+}
+@media (min-width: var(--bp-md)) {
+	.section { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+}
+@media (min-width: var(--bp-lg)) {
+	.section { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+}
+
+/* Footer */
+.site-footer{ padding-top:var(--space-3); padding-bottom:var(--space-3); border-top:1px solid #f0f0f0; color:var(--muted); }
+
+/* Accessibility */
+a:focus{ outline: 3px solid rgba(0,116,255,0.12); outline-offset:3px; }
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
