@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Neo‑Swiss Timeline</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./styles/styles.css">
+	<style>
+		/* Timeline-specific styles */
+		.timeline-container {
+			position: relative;
+			padding: var(--space-4) 0;
+		}
+
+		.timeline-item {
+			display: grid;
+			grid-template-columns: 1fr 40px 1fr;
+			gap: var(--space-4);
+			margin-bottom: var(--space-6);
+			align-items: start;
+		}
+
+		/* Alternate left/right layout on desktop */
+		@media (min-width: var(--bp-lg)) {
+			.timeline-item:nth-child(odd) {
+				direction: rtl;
+			}
+			.timeline-item:nth-child(odd) > * {
+				direction: ltr;
+			}
+		}
+
+		/* Mobile: single column centered */
+		@media (max-width: 767px) {
+			.timeline-item {
+				grid-template-columns: 40px 1fr;
+				gap: var(--space-3);
+			}
+		}
+
+		.timeline-dot {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background: var(--accent);
+			border: 3px solid var(--bg);
+			position: relative;
+			flex-shrink: 0;
+			z-index: 2;
+		}
+
+		.timeline-line {
+			position: absolute;
+			left: 50%;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background: linear-gradient(to bottom, var(--accent), transparent);
+			transform: translateX(-50%);
+		}
+
+		@media (max-width: 767px) {
+			.timeline-line {
+				left: 19px;
+			}
+		}
+
+		.timeline-content {
+			background: var(--surface);
+			border-radius: 10px;
+			padding: var(--space-3);
+			box-shadow: 0 4px 12px rgba(11,11,11,0.03);
+		}
+
+		.timeline-date {
+			font-weight: 700;
+			color: var(--accent);
+			margin-bottom: var(--space-1);
+			font-size: 14px;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.timeline-title {
+			font-weight: 700;
+			margin-bottom: var(--space-1);
+			font-size: 18px;
+		}
+
+		.timeline-description {
+			color: var(--muted);
+			font-size: 15px;
+			line-height: 1.5;
+		}
+
+		/* Ensure timeline-content is wide enough on desktop */
+		@media (min-width: var(--bp-lg)) {
+			.timeline-item:nth-child(odd) .timeline-content {
+				grid-column: 1;
+			}
+			.timeline-item:nth-child(even) .timeline-content {
+				grid-column: 3;
+			}
+		}
+	</style>
+</head>
+<body class="neo-swiss">
+	<header class="site-header">
+		<nav class="container nav">
+			<div class="brand"><a href="index.html">Neo‑Swiss</a></div>
+			<ul class="nav-links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="neo-swiss.html">About</a></li>
+				<li><a href="#timeline">Timeline</a></li>
+			</ul>
+			<a class="cta" href="index.html">Back</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="container section">
+			<h1 class="h1">Neo‑Swiss Design Timeline</h1>
+			<p class="lead">A journey from concept to modern digital design system — the evolution of Neo‑Swiss Design from its roots in Swiss typography to today's responsive, accessible interfaces.</p>
+		</section>
+
+		<section id="timeline" class="container section">
+			<div class="timeline-container">
+				<div class="timeline-line"></div>
+
+				<div class="timeline-item">
+					<div class="timeline-content">
+						<div class="timeline-date">1950s – 1960s</div>
+						<div class="timeline-title">Swiss International Style</div>
+						<div class="timeline-description">The original Swiss style emerges in Switzerland, emphasizing objective communication through rigid grids, clean typography, and asymmetric layouts — influencing graphic design globally for decades.</div>
+					</div>
+					<div class="timeline-dot"></div>
+					<div></div>
+				</div>
+
+				<div class="timeline-item">
+					<div></div>
+					<div class="timeline-dot"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">2010s</div>
+						<div class="timeline-title">Digital Design Systems Emerge</div>
+						<div class="timeline-description">Design systems become a core practice in web and app design. Teams recognize the need for consistent, reusable components and shared design tokens across platforms.</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-content">
+						<div class="timeline-date">2018</div>
+						<div class="timeline-title">Neo‑Swiss Concept Born</div>
+						<div class="timeline-description">Contemporary designers begin adapting Swiss International Style principles for responsive digital interfaces, creating "Neo‑Swiss" — a modern interpretation balancing clarity with digital flexibility.</div>
+					</div>
+					<div class="timeline-dot"></div>
+					<div></div>
+				</div>
+
+				<div class="timeline-item">
+					<div></div>
+					<div class="timeline-dot"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">2020</div>
+						<div class="timeline-title">Mobile-First Methodology</div>
+						<div class="timeline-description">Neo‑Swiss frameworks fully embrace mobile-first design, with fluid grids and responsive typography that adapt seamlessly from 320px phones to 1920px+ displays.</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-content">
+						<div class="timeline-date">2022</div>
+						<div class="timeline-title">Accessibility Focus</div>
+						<div class="timeline-description">WCAG compliance and inclusive design become central to Neo‑Swiss principles — high contrast ratios, focus states, reduced-motion support, and semantic HTML are standard practice.</div>
+					</div>
+					<div class="timeline-dot"></div>
+					<div></div>
+				</div>
+
+				<div class="timeline-item">
+					<div></div>
+					<div class="timeline-dot"></div>
+					<div class="timeline-content">
+						<div class="timeline-date">2024</div>
+						<div class="timeline-title">This Sample Site</div>
+						<div class="timeline-description">A minimal Neo‑Swiss sample site is created to demonstrate the system in action — responsive grid, typographic scale, component library, and CSS design tokens.</div>
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-content">
+						<div class="timeline-date">2025 – Present</div>
+						<div class="timeline-title">Continued Evolution</div>
+						<div class="timeline-description">Neo‑Swiss design evolves with modern web technologies: CSS Grid, custom properties, container queries, and performance-first practices — always prioritizing clarity and user focus.</div>
+					</div>
+					<div class="timeline-dot"></div>
+					<div></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="container section" style="text-align: center;">
+			<h2 class="h2">Explore more</h2>
+			<div style="display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
+				<a class="btn primary" href="index.html">Home</a>
+				<a class="btn ghost" href="neo-swiss.html">Learn about Neo‑Swiss</a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer container section">
+		<div class="muted">© Your Company — Neo‑Swiss sample</div>
+	</footer>
+</body>
+</html>
