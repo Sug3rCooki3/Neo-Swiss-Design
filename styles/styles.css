@@ -172,6 +172,12 @@ body.neo-swiss{
 	margin:0 0 var(--space-2) 0;
 	letter-spacing:-0.02em;
 }
+.h2{
+	font-weight:700;
+	font-size: clamp(22px, 3.5vw, 28px);
+	margin:0 0 var(--space-3) 0;
+	letter-spacing:-0.02em;
+}
 .lead{
 	font-size:1rem;
 	color:var(--muted);
@@ -179,23 +185,38 @@ body.neo-swiss{
 }
 .muted{ color:var(--muted); }
 
+/* Mobile-first hero section */
+.hero{ flex-direction: column; }
+@media (min-width: var(--bp-md)){
+	.hero { flex-direction: row; }
+}
+
 /* Get started section styles */
 .get-started .h2{
-	font-size: clamp(22px, 3.5vw, 28px);
-	margin: 0 0 var(--space-3) 0;
-	font-weight:700;
+    font-size: clamp(22px, 3.5vw, 28px);
+    margin: 0 0 var(--space-3) 0;
+    font-weight:700;
 }
 .get-started-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:var(--gutter-mobile); }
 @media (min-width: var(--bp-md)){
-	.get-started-grid{ grid-template-columns: repeat(6,1fr); gap:var(--gutter-tablet); }
+    .get-started-grid{ grid-template-columns: repeat(6,1fr); gap:var(--gutter-tablet); }
 }
 @media (min-width: var(--bp-lg)){
-	.get-started-grid{ grid-template-columns: repeat(12,1fr); gap:var(--gutter-desktop); }
+    .get-started-grid{ grid-template-columns: repeat(12,1fr); gap:var(--gutter-desktop); }
 }
 .get-started .card{ min-height:140px; display:flex; flex-direction:column; justify-content:center; }
 .get-started h3{ margin:0 0 var(--space-1) 0; }
 
-
+/* Responsive card sizing for better mobile experience */
+@media (max-width: 479px){
+	.get-started .card {
+		min-height: 100px;
+		padding: var(--space-2);
+	}
+	.get-started h3 {
+		font-size: 16px;
+	}
+}
 /* Basic components (minimal, functional) */
 .card{
 	background:var(--surface);
@@ -223,9 +244,23 @@ body.neo-swiss{
 	font-weight:600;
 	text-decoration:none;
 	border:1px solid transparent;
+	min-height: 44px;
 }
 .btn.primary{ background:var(--text); color:var(--bg); }
 .btn.ghost{ background:transparent; color:var(--text); border-color:#eaeaea; }
+
+/* Mobile-friendly button layout */
+@media (max-width: 479px){
+	.btn {
+		padding: calc(var(--space-1)) calc(var(--space-2));
+		font-size: 14px;
+	}
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+	}
+}
 
 /* Header / nav */
 .site-header{ border-bottom:1px solid #efefef; background:transparent; }
@@ -235,15 +270,27 @@ body.neo-swiss{
 	gap:var(--space-3);
 	padding-top:var(--space-2);
 	padding-bottom:var(--space-2);
+	flex-wrap: wrap;
 }
 .brand{ font-weight:700; letter-spacing:-0.02em; }
 .nav-links{ display:none; list-style:none; margin:0; padding:0; gap:var(--space-3); }
 .nav-links li a{ color:var(--muted); text-decoration:none; font-weight:500; }
-.cta{ margin-left:auto; text-decoration:none; }
+.cta{ margin-left:auto; text-decoration:none; font-size: 14px; }
 
 /* show nav on tablet and up */
 @media (min-width: var(--bp-md)){
 	.nav-links{ display:flex; }
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 479px){
+	.nav {
+		gap: var(--space-2);
+		padding-top: var(--space-1);
+		padding-bottom: var(--space-1);
+	}
+	.brand { font-size: 14px; }
+	.cta { padding: 8px 12px; font-size: 12px; }
 }
 
 /* 5) Cleaner nav spacing and subtle emphasis */
