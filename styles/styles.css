@@ -15,6 +15,7 @@
 	--bg: #ffffff;
 	--surface: #fbfbfb;
 	--muted: #6d6d6d;
+	--muted-strong: #575757; /* slightly darker for improved contrast */
 	--text: #0b0b0b;
 	--accent: #0074ff;
 
@@ -74,11 +75,7 @@ body.neo-swiss{
 }
 
 /* 6) Ensure container paddings meet requirement (16px mobile, 24px desktop) */
-/* (The container rule already exists; this is a safety override) */
-.container { padding-left:16px; padding-right:16px; }
-@media (min-width: var(--bp-lg)) {
-	.container { padding-left:24px; padding-right:24px; }
-}
+/* (Duplicate safety override removed — container is defined above) */
 
 /* Grid system (mobile-first)
    - mobile (>=0): 4 cols, gutter 12px
@@ -89,20 +86,18 @@ body.neo-swiss{
 	display:grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: var(--gutter-mobile);
-	align-items:start;
+	/* Make grid items stretch to equal heights across a row */
+	align-items: stretch;
+	grid-auto-rows: 1fr;
 }
 
 /* 3) Subtle responsive column guides to make grid structure visible
    - faint 1px lines at column boundaries, mobile/tablet/desktop percentages */
-.grid {
-	/* keep existing grid behavior, add column guide overlay */
-	background-image: repeating-linear-gradient(
-		to right,
-		rgba(11,11,11,0.03) 0 1px,
-		transparent 1px 25%
-	);
-	background-size: 100% 100%;
-	background-repeat: repeat;
+.grid{
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--gutter-mobile);
+	align-items:start;
 }
 
 /* Tablet: 6-col */
@@ -110,11 +105,6 @@ body.neo-swiss{
 	.grid{
 		grid-template-columns: repeat(6, 1fr);
 		gap: var(--gutter-tablet);
-		background-image: repeating-linear-gradient(
-			to right,
-			rgba(11,11,11,0.03) 0 1px,
-			transparent 1px 16.6667%
-		);
 	}
 }
 
@@ -123,11 +113,6 @@ body.neo-swiss{
 	.grid{
 		grid-template-columns: repeat(12, 1fr);
 		gap: var(--gutter-desktop);
-		background-image: repeating-linear-gradient(
-			to right,
-			rgba(11,11,11,0.03) 0 1px,
-			transparent 1px 8.3333%
-		);
 	}
 }
 
@@ -197,14 +182,8 @@ body.neo-swiss{
     margin: 0 0 var(--space-3) 0;
     font-weight:700;
 }
-.get-started-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:var(--gutter-mobile); }
-@media (min-width: var(--bp-md)){
-    .get-started-grid{ grid-template-columns: repeat(6,1fr); gap:var(--gutter-tablet); }
-}
-@media (min-width: var(--bp-lg)){
-    .get-started-grid{ grid-template-columns: repeat(12,1fr); gap:var(--gutter-desktop); }
-}
-.get-started .card{ min-height:auto; display:flex; flex-direction:column; justify-content:flex-start; padding: var(--space-2); }
+/* Removed .get-started-grid (not used) - index uses the generic .grid system */
+.get-started .card{ min-height:0; display:flex; flex-direction:column; justify-content:center; padding: var(--space-2); height:100%; }
 .get-started h3{ margin:0 0 var(--space-1) 0; font-size: 18px; }
 .get-started p { font-size: 14px; line-height: 1.4; }
 
@@ -224,8 +203,14 @@ body.neo-swiss{
 	border-radius:10px;
 	padding:var(--space-3);
 	box-shadow: none;
+	/* ensure cards fill their grid cell and allow vertical centering */
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	height:100%;
+	min-height:0;
 }
-.demo-card{ min-height:160px; display:flex; flex-direction:column; justify-content:center; }
+/* .demo-card removed (unused) */
 .doc-card{
 	background:linear-gradient(180deg,#fff,#fbfbfb);
 	border:none;
@@ -354,6 +339,9 @@ body.neo-swiss{
 	align-items: center;
 }
 
+/* spacing moved from inline styles */
+.cta-row { margin-top: var(--space-4); }
+
 @media (max-width: 479px) {
 	.cta-row {
 		flex-direction: column;
@@ -387,6 +375,12 @@ body.neo-swiss{
 	position: relative;
 	padding-left: var(--space-3);
 	padding-bottom: var(--space-3);
+	/* make feature cards fill grid cell and center content */
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	height:100%;
+	min-height:0;
 }
 
 .feature h3 {
@@ -403,16 +397,7 @@ body.neo-swiss{
 	color: var(--muted);
 }
 
-/* Left border accent on features */
-.feature::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 32px;
-	width: 3px;
-	background: var(--accent);
-}
+/* Left border accent on features removed to avoid visible accent */
 
 /* Documentation Section */
 .docs {
@@ -430,33 +415,58 @@ body.neo-swiss{
 	letter-spacing: -0.01em;
 }
 
+.docs h2 { margin-bottom: var(--space-4); }
+
+.docs .doc-card h4 { margin: 0 0 var(--space-1) 0; }
+.docs .doc-card p { margin: 0; font-size: 0.95rem; }
+
 .docs .doc-card {
 	padding: var(--space-3);
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	min-height: 120px;
 	position: relative;
 	overflow: hidden;
 	background: #ffffff;
+	height:100%;
+	min-height:0;
 }
 
 .docs .doc-card::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 3px;
-	height: 0;
-	background: var(--accent);
-	transition: height 0.3s ease;
-}
-
-.docs .doc-card:hover::after {
-	height: 100%;
+	/* accent removed to keep cards visually minimal */
+	content: none;
 }
 
 /* Accessibility */
 a:focus{ outline: 3px solid rgba(0,116,255,0.12); outline-offset:3px; }
 @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
+
+/* Skip link (visually hidden until focused) */
+.skip-link{
+	position:absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.skip-link:focus, .skip-link:active{
+	position: fixed;
+	left: 16px;
+	top: 16px;
+	width: auto;
+	height: auto;
+	padding: 8px 12px;
+	background: var(--text);
+	color: var(--bg);
+	z-index: 9999;
+	border-radius: 6px;
+}
+
+/* better focus-visible for keyboard users */
+:focus-visible{ outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* use slightly stronger muted color for body text where appropriate */
+.muted{ color: var(--muted-strong); }
 
