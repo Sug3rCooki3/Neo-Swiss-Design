@@ -183,7 +183,9 @@ body.neo-swiss{
     font-weight:700;
 }
 /* Removed .get-started-grid (not used) - index uses the generic .grid system */
-.get-started .card{ min-height:0; display:flex; flex-direction:column; justify-content:center; padding: var(--space-2); height:100%; }
+.get-started .card{ min-height:0; display:flex; flex-direction:column; justify-content:center; padding: var(--space-3); padding-left: 0; height:100%; }
+/* ensure h3 headings inside cards are flush with the container */
+.get-started h3 { margin-left: 0; }
 .get-started h3{ margin:0 0 var(--space-1) 0; font-size: 18px; }
 .get-started p { font-size: 14px; line-height: 1.4; }
 
@@ -202,6 +204,7 @@ body.neo-swiss{
 	background:var(--surface);
 	border-radius:10px;
 	padding:var(--space-3);
+	padding-left: 0;
 	box-shadow: none;
 	/* ensure cards fill their grid cell and allow vertical centering */
 	display:flex;
@@ -216,6 +219,7 @@ body.neo-swiss{
 	border:none;
 	border-radius:8px;
 	padding:var(--space-3);
+	padding-left: 0;
 	box-shadow: none;
 }
 
@@ -373,7 +377,8 @@ body.neo-swiss{
 
 .feature {
 	position: relative;
-	padding-left: var(--space-3);
+	padding-left: 0;
+	padding-right: var(--space-3);
 	padding-bottom: var(--space-3);
 	/* make feature cards fill grid cell and center content */
 	display:flex;
@@ -382,6 +387,19 @@ body.neo-swiss{
 	height:100%;
 	min-height:0;
 }
+
+/* Make headings inside these blocks flush with container */
+.get-started h3,
+.feature h3,
+.doc-card h4,
+.card h3 { margin-left: 0; }
+
+/* Documentation-specific: ensure doc cards align with section heading */
+.docs .doc-card {
+	padding-left: 0;
+	padding-right: var(--space-3);
+}
+.docs h4, .docs .doc-card h4 { margin-left: 0; }
 
 .feature h3 {
 	font-size: clamp(1.125rem, 3vw, 1.375rem);
@@ -422,6 +440,7 @@ body.neo-swiss{
 
 .docs .doc-card {
 	padding: var(--space-3);
+	padding-left: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
