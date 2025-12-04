@@ -1,5 +1,7 @@
 # Ignore references directory
 references/
+images/
+checklist/
 
 # IDE and editor files
 .vscode/
