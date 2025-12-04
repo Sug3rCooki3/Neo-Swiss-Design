@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Design Examples — Neo‑Swiss</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./styles/styles.css">
+	<style>
+		.example-card {
+			background: transparent;
+			border-radius: 12px;
+			overflow: hidden;
+			border: none;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			transition: transform 0.2s ease;
+		}
+		.example-card:hover {
+			transform: translateY(-2px);
+		}
+		.example-image-container {
+			background: #f7f7f7;
+			border-radius: 12px;
+			overflow: hidden;
+			margin-bottom: var(--space-1);
+			border: 1px solid rgba(0,0,0,0.04);
+			aspect-ratio: 3/2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: var(--space-2);
+		}
+		.example-image {
+			width: 100%;
+			height: 100%;
+			display: block;
+			object-fit: contain; 
+		}
+		.example-content {
+			padding: 0;
+		}
+		.example-tag {
+			display: inline-block;
+			font-size: 11px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--muted);
+			margin-bottom: var(--space-1);
+		}
+		.example-card h3 {
+			font-size: 16px;
+			margin: 0 0 4px 0;
+			font-weight: 600;
+		}
+		.example-card p {
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.4;
+			margin: 0;
+		}
+		.comparison-grid {
+			display: grid;
+			gap: var(--space-4);
+			margin-top: var(--space-4);
+		}
+		@media (min-width: 768px) {
+			.comparison-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	</style>
+</head>
+<body class="neo-swiss">
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<header class="site-header">
+		<nav class="container nav" aria-label="Primary navigation">
+			<div class="brand"><a href="index.html">Neo‑Swiss</a></div>
+			<ul class="nav-links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="neo-swiss.html">About</a></li>
+				<li><a href="timeline.html">Timeline</a></li>
+				<li><a href="examples.html" aria-current="page" style="color: var(--text);">Examples</a></li>
+			</ul>
+			<a class="cta" href="index.html">Back</a>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section class="container section">
+			<h1 class="h1">Industry Examples</h1>
+			<p class="lead">Analyzing contemporary interfaces (Stripe, Airbnb, Linear) to understand the Neo‑Swiss aesthetic and how our system compares.</p>
+		</section>
+
+		<section class="container section">
+			<h2 class="h2">Visual Analysis</h2>
+			<div class="grid">
+				<!-- Example 1 -->
+				<div class="col-span-4 col-span-md-3 col-span-lg-3">
+					<article class="example-card">
+						<div class="example-image-container">
+							<img src="./images/Screenshot 2025-12-03 212915.png" alt="Screenshot of a web interface demonstrating a rigid grid layout with clear column structure" class="example-image" loading="lazy">
+						</div>
+						<div class="example-content">
+							<span class="example-tag">Structure</span>
+							<h3>Grid & Layout</h3>
+							<p class="muted">Rigid alignment and clear column structure organizing dense information.</p>
+						</div>
+					</article>
+				</div>
+
+				<!-- Example 2 -->
+				<div class="col-span-4 col-span-md-3 col-span-lg-3">
+					<article class="example-card">
+						<div class="example-image-container">
+							<img src="./images/Screenshot 2025-12-03 213001.png" alt="Screenshot showing large, bold headings paired with legible body text to demonstrate type hierarchy" class="example-image" loading="lazy">
+						</div>
+						<div class="example-content">
+							<span class="example-tag">Typography</span>
+							<h3>Type Hierarchy</h3>
+							<p class="muted">Large, bold headings paired with highly legible body text for immediate focus.</p>
+						</div>
+					</article>
+				</div>
+
+				<!-- Example 3 -->
+				<div class="col-span-4 col-span-md-3 col-span-lg-3">
+					<article class="example-card">
+						<div class="example-image-container">
+							<img src="./images/Screenshot 2025-12-03 213115.png" alt="Screenshot highlighting generous whitespace around content elements" class="example-image" loading="lazy">
+						</div>
+						<div class="example-content">
+							<span class="example-tag">Minimalism</span>
+							<h3>Whitespace</h3>
+							<p class="muted">Generous padding allows content to breathe and reduces cognitive load.</p>
+						</div>
+					</article>
+				</div>
+
+				<!-- Example 4 -->
+				<div class="col-span-4 col-span-md-3 col-span-lg-3">
+					<article class="example-card">
+						<div class="example-image-container">
+							<img src="./images/Screenshot 2025-12-03 213136.png" alt="Screenshot of an interface using a restricted monochrome color palette" class="example-image" loading="lazy">
+						</div>
+						<div class="example-content">
+							<span class="example-tag">Palette</span>
+							<h3>Monochrome Focus</h3>
+							<p class="muted">Restricted color palettes ensure color is used only for function.</p>
+						</div>
+					</article>
+				</div>
+
+				<!-- Example 5 -->
+				<div class="col-span-4 col-span-md-3 col-span-lg-3">
+					<article class="example-card">
+						<div class="example-image-container">
+							<img src="./images/Screenshot 2025-12-03 213212.png" alt="Screenshot displaying simple, functional UI components like buttons and cards" class="example-image" loading="lazy">
+						</div>
+						<div class="example-content">
+							<span class="example-tag">Components</span>
+							<h3>Functional UI</h3>
+							<p class="muted">Simple, unadorned components focusing on usability and clarity.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="container section">
+			<h2 class="h2">Comparison: Industry vs. Our Design</h2>
+			<div class="comparison-grid">
+				<div class="card">
+					<h3>Industry Standard (Stripe, Linear)</h3>
+					<ul style="padding-left: 20px; line-height: 1.6; color: var(--muted);">
+						<li><strong>Complex Gradients:</strong> Often use subtle background blurs or mesh gradients.</li>
+						<li><strong>Dark Mode:</strong> Heavily reliant on dark, high-contrast interfaces (Linear).</li>
+						<li><strong>3D Elements:</strong> Use of 3D illustrations or glassmorphism.</li>
+						<li><strong>Dense Data:</strong> Designed for power users with high information density.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h3>Our Neo‑Swiss Implementation</h3>
+					<ul style="padding-left: 20px; line-height: 1.6; color: var(--muted);">
+						<li><strong>Pure Monochrome:</strong> We stick to a stricter black/white foundation for maximum clarity.</li>
+						<li><strong>Light & Airy:</strong> Focus on a clean, light mode aesthetic (similar to Airbnb/Stripe Docs).</li>
+						<li><strong>Flat Design:</strong> We avoid 3D/Glass in favor of pure 2D layout and typography.</li>
+						<li><strong>Accessible Scale:</strong> Larger base type and clearer spacing for readability.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="container section text-center">
+			<h2 class="h2">Explore the System</h2>
+			<div class="actions">
+				<a class="btn primary" href="index.html">Back to Home</a>
+				<a class="btn ghost" href="checklist/aesthetic-review.md" target="_blank">Read Full Audit</a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer container section">
+		<div class="muted">© Your Company — Neo‑Swiss sample</div>
+	</footer>
+</body>
+</html>

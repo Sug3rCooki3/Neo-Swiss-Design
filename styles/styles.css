@@ -91,15 +91,6 @@ body.neo-swiss{
 	grid-auto-rows: 1fr;
 }
 
-/* 3) Subtle responsive column guides to make grid structure visible
-   - faint 1px lines at column boundaries, mobile/tablet/desktop percentages */
-.grid{
-	display:grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: var(--gutter-mobile);
-	align-items:start;
-}
-
 /* Tablet: 6-col */
 @media (min-width: var(--bp-md)){
 	.grid{
@@ -304,6 +295,15 @@ body.neo-swiss{
 }
 @media (min-width: var(--bp-lg)) {
 	.section { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.actions {
+	display: flex;
+	gap: var(--space-2);
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 /* Footer */
