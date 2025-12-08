@@ -174,9 +174,8 @@ body.neo-swiss{
     font-weight:700;
 }
 /* Removed .get-started-grid (not used) - index uses the generic .grid system */
-.get-started .card{ min-height:0; display:flex; flex-direction:column; justify-content:center; padding: var(--space-3); padding-left: 0; height:100%; }
+.get-started .card{ min-height:0; display:flex; flex-direction:column; justify-content:center; padding: var(--space-2) var(--space-3) var(--space-2) 0; height:100%; }
 /* ensure h3 headings inside cards are flush with the container */
-.get-started h3 { margin-left: 0; }
 .get-started h3{ margin:0 0 var(--space-1) 0; font-size: 18px; }
 .get-started p { font-size: 14px; line-height: 1.4; }
 
@@ -360,13 +359,16 @@ body.neo-swiss{
 /* Enhanced Get Started Section */
 .get-started h2 {
 	font-size: clamp(1.75rem, 5vw, 2.5rem);
-	margin-bottom: var(--space-6);
+	margin-bottom: var(--space-3);
 	letter-spacing: -0.01em;
 }
 
 .get-started .grid {
-	gap: var(--space-4);
+	/* Use standard grid gap instead of fixed 32px */
+	gap: var(--gutter-mobile);
 }
+@media (min-width: 768px){ .get-started .grid{ gap: var(--gutter-tablet); } }
+@media (min-width: 1200px){ .get-started .grid{ gap: var(--gutter-desktop); } }
 
 /* Features Section */
 .features {
@@ -395,10 +397,6 @@ body.neo-swiss{
 .card h3 { margin-left: 0; }
 
 /* Documentation-specific: ensure doc cards align with section heading */
-.docs .doc-card {
-	padding-left: 0;
-	padding-right: var(--space-3);
-}
 .docs h4, .docs .doc-card h4 { margin-left: 0; }
 
 .feature h3 {
@@ -433,14 +431,13 @@ body.neo-swiss{
 	letter-spacing: -0.01em;
 }
 
-.docs h2 { margin-bottom: var(--space-4); }
+.docs h2 { margin-bottom: var(--space-3); }
 
 .docs .doc-card h4 { margin: 0 0 var(--space-1) 0; }
 .docs .doc-card p { margin: 0; font-size: 0.95rem; }
 
 .docs .doc-card {
-	padding: var(--space-3);
-	padding-left: 0;
+	padding: var(--space-2) var(--space-3) var(--space-2) 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -485,6 +482,19 @@ a:focus{ outline: 3px solid rgba(0,116,255,0.12); outline-offset:3px; }
 
 /* better focus-visible for keyboard users */
 :focus-visible{ outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Utility for screen readers */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
 
 /* use slightly stronger muted color for body text where appropriate */
 .muted{ color: var(--muted-strong); }

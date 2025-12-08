@@ -29,6 +29,19 @@ The HTML is organized into clear semantic sections. Look for these parts:
 - Utilities / helpers
   - Small utility classes (spacing, text-muted, visually-hidden) are used to keep HTML minimal and styles consistent.
 
+## Project Documentation & Backlog
+Detailed strategies and specifications are maintained in the `backlog/` directory:
+
+*   **[Compliance Strategy](backlog/compliance_strategy.md)**:
+    *   **GDPR**: Data privacy status and future requirements.
+    *   **WCAG 2.1**: Accessibility implementation details (Semantic HTML, Keyboard Nav, Contrast).
+*   **[Performance & SEO](backlog/performance_seo_strategy.md)**:
+    *   **Performance**: Strategy for achieving 100/100 Lighthouse scores (Zero-runtime JS, Asset optimization).
+    *   **SEO**: Meta tags, semantic structure, and mobile-first indexing.
+*   **[Design Specification](backlog/design_spec.md)**:
+    *   **Archetype**: "The Modernist Architect" persona.
+    *   **Style Spec**: Detailed breakdown of the Grid, Typography, Spacing (8px baseline), and Color Palette.
+
 ## style.css — what to expect and how it works
 The stylesheet implements the Neo‑Swiss look using a few core patterns:
 

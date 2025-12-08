@@ -1,0 +1,55 @@
+/* Page-specific styles for the audit */
+.audit-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.audit-list li {
+	margin-bottom: var(--space-2);
+	padding-left: var(--space-4);
+	position: relative;
+}
+.audit-list li::before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	color: var(--accent);
+	font-weight: bold;
+}
+.comparison-card {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.comparison-verdict {
+	margin-top: auto;
+	padding-top: var(--space-2);
+	font-weight: 600;
+	color: var(--text);
+	border-top: 1px solid #eee;
+}
+.audit-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: var(--space-3);
+	font-size: 0.95rem;
+}
+.audit-table th, .audit-table td {
+	text-align: left;
+	padding: var(--space-2);
+	border-bottom: 1px solid #eee;
+}
+.audit-table th {
+	font-weight: 600;
+	color: var(--text);
+}
+.audit-table td {
+	color: var(--muted);
+}
+/* Responsive table */
+@media (max-width: 768px) {
+	.audit-table {
+		display: block;
+		overflow-x: auto;
+	}
+}

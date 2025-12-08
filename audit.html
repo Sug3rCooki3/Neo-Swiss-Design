@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta name="description" content="A comprehensive design audit of the Neo-Swiss design system, evaluating aesthetics, usability, and accessibility." />
+	<title>Neo‑Swiss Aesthetic Audit</title>
+	<link rel="icon" href="data:," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./styles/styles.css">
+	<link rel="stylesheet" href="./styles/audit_style.css">
+</head>
+<body class="neo-swiss">
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<header class="site-header">
+		<nav class="container nav" aria-label="Primary navigation">
+			<div class="brand"><a href="index.html" style="text-decoration:none; color:inherit;">Neo‑Swiss</a></div>
+			<ul class="nav-links">
+				<li><a href="neo-swiss.html">About</a></li>
+				<li><a href="timeline.html">Timeline</a></li>
+				<li><a href="examples.html">Examples</a></li>
+			</ul>
+			<a class="cta" href="index.html">Back to Home</a>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section class="hero-section">
+			<div class="container section">
+				<h1 class="h1">Aesthetic Review<br>& Comparison</h1>
+				<p class="lead">An audit of the Neo-Swiss design system against industry standards and classic principles.</p>
+			</div>
+		</section>
+
+		<section class="container section">
+			<h2 class="h2">1. Checklist Evaluation</h2>
+			<p class="muted" style="margin-bottom: var(--space-4);">Does the current build achieve the Neo-Swiss aesthetic?</p>
+			
+			<div class="card">
+				<ul class="audit-list">
+					<li><strong>Grid-based layout:</strong> Yes. The CSS Grid implementation (4/6/12 cols) with visible guide lines is the hallmark of this style.</li>
+					<li><strong>Responsive and fluid:</strong> Yes. Usage of <code>clamp()</code> for type and percentage-based grids makes it truly fluid, not just "adaptive".</li>
+					<li><strong>Clean typography:</strong> Yes. <code>Inter</code> is the standard-bearer for modern Neo-Swiss. It is objective and legible.</li>
+					<li><strong>Generous white space:</strong> Yes. The spacing scale (<code>--space-1</code> to <code>--space-8</code>) ensures rhythm.</li>
+					<li><strong>Minimal decoration:</strong> Yes. No drop-shadows (except subtle elevation), no gradients, no rounded corners > 10px.</li>
+					<li><strong>Professional but not sterile:</strong> The <code>--accent</code> color (Blue) prevents it from looking like a wireframe.</li>
+					<li><strong>Monochrome + optional accent:</strong> Yes. Black/White/Gray + Blue is the classic formula.</li>
+					<li><strong>Mobile-first thinking:</strong> Yes. The CSS is written mobile-up (<code>min-width</code> overrides).</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="container section">
+			<h2 class="h2">2. Industry Comparison</h2>
+			<div class="grid">
+				<!-- Stripe -->
+				<article class="card comparison-card col-span-4 col-span-md-2 col-span-lg-4">
+					<h3>vs. Stripe.com</h3>
+					<p class="muted"><strong>Stripe</strong> is "Expressive Neo-Swiss". They take the grid and type but add vibrant gradients, 3D illustrations, and skewed angles.</p>
+					<p class="muted"><strong>Your Project</strong> is "Purist Neo-Swiss". It is calmer, flatter, and more strictly aligned. It resembles Stripe's documentation pages more than their marketing homepage.</p>
+					<div class="comparison-verdict">Verdict: You achieve the structure of Stripe without the marketing fluff.</div>
+				</article>
+
+				<!-- Airbnb -->
+				<article class="card comparison-card col-span-4 col-span-md-2 col-span-lg-4">
+					<h3>vs. Airbnb.design</h3>
+					<p class="muted"><strong>Airbnb</strong> pioneered "Complexion Reduction"—removing color to let content shine. Huge headers, black text, white background.</p>
+					<p class="muted"><strong>Your Project</strong> is a very close match here. The high-contrast typography and lack of decorative borders align perfectly with Airbnb's design language.</p>
+					<div class="comparison-verdict">Verdict: High Match. This is the closest aesthetic sibling.</div>
+				</article>
+
+				<!-- Linear -->
+				<article class="card comparison-card col-span-4 col-span-md-2 col-span-lg-4">
+					<h3>vs. Linear.app</h3>
+					<p class="muted"><strong>Linear</strong> is "Dark Neo-Swiss". They focus on precision, 1px borders, and dark mode.</p>
+					<p class="muted"><strong>Your Project</strong> is currently Light Mode only. To match Linear, you would need a high-quality Dark Mode and more subtle "micro-interactions".</p>
+					<div class="comparison-verdict">Verdict: You share the precision but differ in mood (Light/Airy vs. Dark/Cyber).</div>
+				</article>
+			</div>
+		</section>
+
+		<section class="container section">
+			<h2 class="h2">3. Contemporary vs. Classic Swiss</h2>
+			<p class="muted">What makes your project "Neo" (New) rather than just "Swiss" (Old)?</p>
+			
+			<div class="card" style="overflow-x: auto;">
+				<table class="audit-table">
+					<thead>
+						<tr>
+							<th>Feature</th>
+							<th>Classic Swiss (1950s Print)</th>
+							<th>Neo-Swiss (2020s Digital)</th>
+							<th>Your Project</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>Medium</strong></td>
+							<td>Fixed Paper (A4, Poster)</td>
+							<td>Fluid Screens (Mobile to Desktop)</td>
+							<td>✅ Fluid (<code>clamp</code>, <code>%</code>)</td>
+						</tr>
+						<tr>
+							<td><strong>Grid</strong></td>
+							<td>Rigid, Absolute</td>
+							<td>Flexible, Fractional</td>
+							<td>✅ CSS Grid (<code>1fr</code>)</td>
+						</tr>
+						<tr>
+							<td><strong>Type</strong></td>
+							<td>Helvetica (Static)</td>
+							<td>Inter / Variable Fonts</td>
+							<td>✅ Inter (Google Fonts)</td>
+						</tr>
+						<tr>
+							<td><strong>Interaction</strong></td>
+							<td>None (Static)</td>
+							<td>Hover, Focus, Active states</td>
+							<td>✅ CSS <code>:hover</code>, <code>:focus</code></td>
+						</tr>
+						<tr>
+							<td><strong>Accessibility</strong></td>
+							<td>Visual only</td>
+							<td>Semantic HTML, ARIA, Contrast</td>
+							<td>✅ Semantic tags, Focus rings</td>
+						</tr>
+						<tr>
+							<td><strong>Color</strong></td>
+							<td>CMYK Print Safe</td>
+							<td>RGB / P3, Dark Mode support</td>
+							<td>✅ CSS Variables</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="card" style="margin-top: var(--space-4);">
+				<h3>Key Differentiator</h3>
+				<p class="muted">The defining feature of <strong>Neo-Swiss</strong> is <strong>Responsiveness</strong>. Classic Swiss breaks if you fold the paper. Neo-Swiss reflows the content while maintaining the <em>spirit</em> of the grid. Your use of <code>clamp()</code> for typography is the "killer feature" that makes this contemporary.</p>
+			</div>
+		</section>
+
+		<section class="container section text-center">
+			<h2 class="h2">Explore more</h2>
+			<div class="actions">
+				<a class="btn primary" href="index.html">Home</a>
+				<a class="btn ghost" href="examples.html">Back to Examples</a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer container section">
+		<div class="muted">© Your Company — Neo‑Swiss sample</div>
+	</footer>
+</body>
+</html>
